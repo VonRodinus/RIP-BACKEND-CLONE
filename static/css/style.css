@@ -1,0 +1,440 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #FFFFFF;
+}
+
+/* Хедер */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 193px;
+    z-index: 1000;
+}
+
+.nav-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 1);
+    top: 0;
+    left: 0;
+}
+
+.nav-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 100px;
+}
+
+.logo-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo-text {
+    font-family: 'FretQWikC';
+    font-size: 64px;
+    font-weight: 400;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Белая прокладка под хедером */
+.white-section {
+    height: 96px;
+    background: #FFFFFF;
+    margin-top: 193px;
+    position: relative;
+    width: 100%;
+}
+
+/* Герой-секция */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-shadow:
+        0.5px 0.5px 0 #000000,
+        -0.5px -0.5px 0 #000000,
+        0.5px -0.5px 0 #000000,
+        -0.5px 0.5px 0 #000000,
+        0.5px 0.5px 0 #000000;
+    margin: 0;
+    -webkit-text-stroke: 0.5px #000000;
+    position: absolute;
+    bottom: 5px;
+    left: 145px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background: rgba(217, 217, 217, 0.7);
+    border-radius: 20px;
+    padding: 12px 20px;
+    width: 340px;
+    height: 32px;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-icon-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-icon-btn:focus {
+    outline: none;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    background: none;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #000000;
+}
+
+.search-input::placeholder {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* Описание */
+.description-section p[align="center"] {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    height: 168px;
+    align-content: center;
+    padding: 17px;
+}
+
+/* Секция артефактов */
+.artifacts-section {
+    background: #005760;
+    padding: 60px 20px;
+    width: 100%;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.section-line {
+    flex: 1;
+    height: 2px;
+    background: #EFDA00;
+    max-width: 300px;
+}
+
+.section-title {
+    color: #EFDA00;
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.artifacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.artifact-card {
+    background: #FFFFFF;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.artifact-card:hover .artifact-title,
+.artifact-card:hover .artifact-period {
+    text-decoration: underline;
+    text-decoration-color: #EFDA00;
+    text-underline-offset: 3px;
+}
+
+.artifact-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.artifact-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #202020;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    transition: text-decoration 0.3s ease;
+}
+
+.artifact-period {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    transition: text-decoration 0.3s ease;
+}
+
+.add-to-request-btn {
+    background: #008573;
+    color: #EFDA00;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50%;
+    align-self: center;
+    margin-top: auto;
+}
+
+.add-to-request-btn:hover {
+    background: #006b5a;
+}
+
+.btn-text {
+    color: #EFDA00;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Страница детали артефакта */
+.artifact-detail-section {
+    background-color: #d9d9d9;
+    width: 100%;
+    padding: 60px 0;
+}
+
+.artifact-detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.artifact-image-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.artifact-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.artifact-detail-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #000000;
+    margin: 0;
+}
+
+.artifact-detail-period {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.period-text,
+.tpq-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #000000;
+    margin: 0;
+}
+
+.artifact-description {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Иконка корзины */
+.cart-icon-container {
+    position: absolute;
+    margin-top: 24px;
+    right: 48px;
+    z-index: 100;
+}
+
+.cart-icon-link {
+    display: block;
+    position: relative;
+}
+
+.cart-icon {
+    width: 40px;
+    height: 40px;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+}
+
+.cart-icon-link:hover .cart-icon {
+    transform: scale(1.1);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff4d4d;
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .nav-content {
+        padding: 0 20px;
+    }
+
+    .logo-text {
+        font-size: 48px;
+    }
+
+    .white-section {
+        height: 80px;
+    }
+
+    .hero-title {
+        font-size: 48px;
+        left: 20px;
+    }
+
+    .search-container {
+        width: 300px;
+    }
+
+    .description-section {
+        padding: 40px 20px;
+    }
+
+    .artifacts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .section-line {
+        width: 100px;
+    }
+}
+
+@font-face {
+    font-family: 'FretQWikC';
+    src: local('FretQWikC'), url('path-to-fretqwikc.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}

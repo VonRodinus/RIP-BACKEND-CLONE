@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>Chronus - Артефакты</title>
+    <meta name="description" content="В основе работы Chronus лежит постоянно обновляемая база данных артефактов с установленной датировкой." />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=EB+Garamond:wght@400&display=swap" rel="stylesheet">
+    <style>
+        a { text-decoration: none; color: inherit; }
+        .artifact-card a:hover { text-decoration: underline; text-decoration-color: yellow; }
+        .cart-icon.disabled { opacity: 0.5; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    <div class="desktop">
+        <!-- Навбар -->
+        <header class="header" id="mainHeader">
+            <div class="nav-container">
+                <div class="nav-background"></div>
+                <div class="nav-content">
+                    <div class="logo-section">
+                        <a href="/" class="logo-text">Chronus</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Cart icon container -->
+        <div class="cart-icon-container">
+            {{if .CurrentTPQRequest.ID}}
+            <a href="/tpq_request/{{.CurrentTPQRequest.ID}}" class="cart-icon-link">
+                <img src="http://localhost:9000/artifacts/feather_icon.png" alt="Перейти к расчёту" class="cart-icon" />
+                <span class="cart-count">{{.RequestCount}}</span>
+            </a>
+            {{else}}
+            <img src="http://localhost:9000/artifacts/feather_icon.png" alt="Перейти к расчёту" class="cart-icon disabled" />
+            <span class="cart-count">0</span>
+            {{end}}
+        </div>
+        
+        <div class="white-section"></div>
+        
+        <!-- hero section -->
+        <section class="hero-section">
+            <img class="hero-image" src="http://localhost:9000/artifacts/artifacts_picture.jpg" alt="Коллекция артефактов" />
+            <div class="hero-overlay">
+                <h1 class="hero-title">Артефакты</h1>
+                <form class="search-container" method="GET" action="/">
+                    <input type="text" name="artifact_name_or_tpq_filter" class="search-input" placeholder="Поиск артефактов..." value="{{.SearchQuery}}" />
+                    <button type="submit" class="search-icon-btn">
+                        <img src="http://localhost:9000/artifacts/search_icon.png" alt="Поиск" class="search-icon" />
+                    </button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Описание -->
+        <section class="description-section">
+            <p class="description-main-text"></p>
+            <p align="center">
+                В основе работы Chronus лежит постоянно обновляемая база данных артефактов с установленной датировкой. Наш каталог — это живой инструмент для исследователей, создаваемый и проверяемый экспертами.
+            </p>
+        </section>
+        
+        <!-- Секция с артефактами -->
+        <section class="artifacts-section">
+            <div class="section-header">
+                <div class="section-line"></div>
+                <h2 class="section-title">ПОЗНАКОМЬТЕСЬ С КОЛЛЕКЦИЕЙ</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="artifacts-grid">
+                {{range .Artifacts}}
+                <article class="artifact-card">
+                    <a href="/artifact/{{.ID}}">
+                        <img class="artifact-image" src="{{.ImageURL}}" alt="{{.Name}}" />
+                        <h3 class="artifact-title">{{.Name}}</h3>
+                        <p class="artifact-period">Период бытования: {{.StartDate}}-{{.EndDate}} {{.Epoch}}</p>
+                    </a>
+                    <form action="/add_artifact/{{.ID}}" method="POST">
+                        <button class="add-to-request-btn">
+                            <span class="btn-text">Добавить в расчёт</span>
+                        </button>
+                    </form>
+                </article>
+                {{end}}
+            </div>
+        </section>
+    </div>
+</body>
+</html>

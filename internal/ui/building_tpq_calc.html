@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>Chronus - Расчёт времени строительства объекта</title>
+    <meta name="description" content="Расчёт времени строительства объекта с использованием метода TPQ на основе артефактов" />
+    <link rel="stylesheet" href="/static/css/style2.css" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=EB+Garamond:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="desktop">
+        <!-- Navbar -->
+        <header class="header" id="mainHeader">
+            <div class="nav-container">
+                <div class="nav-background"></div>
+                <div class="nav-content">
+                    <div class="logo-section">
+                        <a href="/" class="logo-text">Chronus</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="white-section"></div>
+        
+        <!-- Main content -->
+        <main class="calculation-content">
+            <!-- Section title -->
+            <h1 class="calculation-title">Расчёт времени строительства объекта</h1>
+            
+            <!-- Object selection form -->
+            <form class="calculation-form">
+                <div class="form-group">
+                    <div class="select-container">
+                        <input type="text" placeholder="Название раскопки" class="object-input" value="{{.CurrentTPQRequest.Excavation}}" />
+                    </div>
+                    <button type="button" class="save-button">
+                        <span class="button-text">Сохранить</span>
+                    </button>
+                </div>
+            </form>
+            
+            <!-- Request items list -->
+            <section class="request-items-list">
+                {{range .CurrentTPQRequest.TPQItems}}
+                <article class="request-item">
+                    <div class="request-item-content">
+                        <img class="request-item-image" src="{{.Artifact.ImageURL}}" alt="{{.Artifact.Name}}" />
+                        <div class="request-item-info">
+                            <div class="request-item-main">
+                                <h3 class="request-item-title">{{.Artifact.Name}}</h3>
+                                <p class="request-item-period">Период бытования: {{.Artifact.StartDate}}-{{.Artifact.EndDate}} {{.Artifact.Epoch}}</p>
+                                <p class="request-item-tpq">TPQ: {{.Artifact.TPQ}}</p>
+                            </div>
+                            <div class="request-item-description">
+                                <input type="text" placeholder="Описание находки" class="description-input" value="{{.Comment}}" />
+                            </div>
+                        </div>
+                        <img src="http://localhost:9000/artifacts/delete_icon.png" alt="Удалить" class="request-item-delete" />
+                    </div>
+                </article>
+                {{end}}
+            </section>
+            
+            <!-- Calculation results -->
+            <div class="calculation-results">
+                <div class="results-container">
+                    <span class="results-label">Датировка из расчёта:</span>
+                    <div class="results-value">{{.CurrentTPQRequest.Result}}</div>
+                </div>
+            </div>
+            
+            <!-- Delete request button -->
+            <div>
+                <form action="/delete_request/{{.CurrentTPQRequest.ID}}" method="POST">
+                    <button type="submit" class="calculate-button">
+                        <span class="button-text">Удалить заявку</span>
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

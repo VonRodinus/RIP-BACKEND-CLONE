@@ -1,0 +1,234 @@
+/* Страница расчёта */
+.calculation-content {
+    padding: 40px 100px;
+    background: #FFFFFF;
+    min-height: calc(100vh - 289px);
+}
+
+.calculation-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.calculation-form {
+    margin-bottom: 60px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    justify-content: center;
+}
+
+.select-container {
+    flex: 1;
+    max-width: 600px;
+    height: 35px;
+    background: #d9d9d9;
+    border-radius: 8px;
+    padding: 7px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.save-button {
+    width: 166px;
+    height: 35px;
+    background: #008573;
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+    background: #006b5a;
+}
+
+.button-text {
+    color: #EFDA00;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Стили для списка заявки - ГОРИЗОНТАЛЬНЫЕ КАРТОЧКИ */
+.request-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 60px;
+}
+
+.request-item {
+    background: #FFFFFF;
+    border: 2px solid #008573;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.request-item-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.request-item-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    border: 1px solid #ddd;
+}
+
+.request-item-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.request-item-main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.request-item-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #202020;
+    margin: 0;
+}
+
+.request-item-period,
+.request-item-tpq {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    margin: 0;
+}
+
+.request-item-period {
+    font-weight: 400;
+    color: #666;
+}
+
+.request-item-tpq {
+    font-weight: 600;
+    color: #008573;
+}
+
+.request-item-delete {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.request-item-delete:hover {
+    opacity: 0.7;
+}
+
+.calculation-results {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+    margin-bottom: 40px;
+    justify-content: center;
+}
+
+.results-container {
+    flex: 1;
+    max-width: 337px;
+    height: 42px;
+    background: #d9d9d9;
+    border-radius: 12px;
+    padding: 11px 19px;
+    display: flex;
+    align-items: center;
+}
+
+.results-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.results-value {
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.calculate-button {
+    width: 174px;
+    height: 42px;
+    background: #008573;
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.calculate-button:hover {
+    background: #006b5a;
+}
+
+/* Убираем подчёркивания на всех ссылках */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.object-input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    outline: none;
+    padding: 0 5px;
+}
+
+.request-item-description {
+    flex: 1;
+}
+
+.description-input {
+    width: 100%;
+    max-width: 500px;
+    height: 35px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    background: #f8f8f8;
+}
+
+.description-input:focus {
+    outline: 2px solid #008573;
+    outline-offset: 2px;
+}
