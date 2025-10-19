@@ -117,7 +117,7 @@ func FormTPQRequest(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Cannot form: not draft", http.StatusBadRequest)
 		return
 	}
-	if req.Excavation == "" || len(req.TPQItems) == 0 {
+	if len(req.TPQItems) == 0 {
 		http.Error(w, "Missing required fields", http.StatusBadRequest)
 		return
 	}
@@ -154,7 +154,7 @@ func CompleteTPQRequest(w http.ResponseWriter, r *http.Request) {
 			maxTPQ = item.Artifact.TPQ
 		}
 	}
-	req.Result = maxTPQ
+	req.Result = &maxTPQ // Изменено для *int
 	if err := db.DB.Save(&req).Error; err != nil {
 		http.Error(w, "Error completing request", http.StatusInternalServerError)
 		return
@@ -205,4 +205,3 @@ func DeleteTPQRequest(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusNoContent)
 }
-

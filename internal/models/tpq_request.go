@@ -22,6 +22,6 @@ type TPQRequest struct {
 	CompletedAt *time.Time
 	ModeratorID *uint
 	Excavation  string
-	Result      int
+	Result      *int             `json:"result"` // Изменено на *int для nullable (пустое значение)
 	TPQItems    []TPQRequestItem `json:"-" gorm:"foreignKey:RequestID"`
 }

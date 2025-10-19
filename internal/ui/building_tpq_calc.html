@@ -67,7 +67,7 @@
             <div class="calculation-results">
                 <div class="results-container">
                     <span class="results-label">Датировка из расчёта:</span>
-                    <div class="results-value">{{.CurrentTPQRequest.Result}}</div>
+                    <div class="results-value">{{if .CurrentTPQRequest.Result}}{{.CurrentTPQRequest.Result}}{{else}}-{{end}}</div> <!-- Убрано * -->
                 </div>
             </div>
             

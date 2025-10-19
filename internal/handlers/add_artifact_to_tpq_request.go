@@ -37,7 +37,7 @@ func AddArtifactToRequestHandler(w http.ResponseWriter, r *http.Request) {
 			CreatedAt:  time.Now(),
 			CreatorID:  GetCreatorID(),
 			Excavation: "",
-			Result:     0,
+			// Result не устанавливаем — остаётся nil
 		}
 		if err := db.DB.Create(currentReq).Error; err != nil {
 			http.Error(w, "Error creating request", http.StatusInternalServerError)
@@ -52,17 +52,8 @@ func AddArtifactToRequestHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	db.DB.FirstOrCreate(&item, models.TPQRequestItem{RequestID: currentReq.ID, ArtifactID: artifactID})
 
-	// Автоматический расчёт TPQ после добавления
-	var req models.TPQRequest
-	db.DB.Preload("TPQItems.Artifact").Where("id = ?", currentReq.ID).First(&req)
-	var maxTPQ int
-	for _, item := range req.TPQItems {
-		if item.Artifact.TPQ > maxTPQ {
-			maxTPQ = item.Artifact.TPQ
-		}
-	}
-	req.Result = maxTPQ
-	db.DB.Save(&req)
+	// Удалён блок автоматического расчёта TPQ
+	// Теперь Result остаётся nil до complete
 
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
