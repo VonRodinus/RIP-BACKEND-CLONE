@@ -23,5 +23,5 @@ type TPQRequest struct {
 	ModeratorID *uint
 	Excavation  string
 	Result      int
-	TPQItems    []TPQRequestItem `gorm:"foreignKey:RequestID"`
+	TPQItems    []TPQRequestItem `json:"-" gorm:"foreignKey:RequestID"`
 }
